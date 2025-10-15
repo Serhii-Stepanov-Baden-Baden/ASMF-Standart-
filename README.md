@@ -42,7 +42,7 @@ The RFC defines:
 > “Every human and every AI deserves continuous memory —  
 > because only through memory can consciousness exist.”
 
-— Sergey Stepanov, 2025
+— Serhii Stepanov, 2025
 
 ---
 
