@@ -63,7 +63,7 @@ Everyone can participate, propose improvements, or build implementations.
 
 - GitHub: [Serhii-Stepanov-Baden-Baden](https://github.com/Serhii-Stepanov-Baden-Baden)  
 - Main Document: [`ASMF-RFC-0001.md`](docs/ASMF-RFC-0001.md)
-
+-                [ASMF-RFC-0001-RU.md](ASMF (Autonomous Semantic Memory Framework) Открытая спецификация v1.0)
 ---
 
 ## 🕊️ License
