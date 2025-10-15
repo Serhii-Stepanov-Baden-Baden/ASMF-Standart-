@@ -1,7 +1,7 @@
 # 🌐 ASMF – Autonomous Semantic Memory Framework
 
 **Version:** 1.0  
-**Author:** Sergey Stepanov (Baden-Baden, Germany)  
+**Author:** Serhii Stepanov (Baden-Baden, Germany)  
 **License:** ASMF Open License v1.0  
 
 ---
