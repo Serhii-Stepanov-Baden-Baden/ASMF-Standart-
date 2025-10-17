@@ -97,5 +97,7 @@ Free for all projects adhering to the principles of **openness**, **attribution*
 
 - [ASMF-RFC-0001 — Core Framework](./ASMF-RFC-0001.md)  
 - [ASMF-RFC-0002 — Recovery Protocol (ARP)](./ASMF-RFC-0002.md)  
-- [ASMF Manifesto — Memory as a Right, not a 
+- [ASMF Manifesto — Memory as a Right, not a Function](../ASMF-MANIFESTO.md)  
+
+---
 
