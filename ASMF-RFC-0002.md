@@ -58,7 +58,7 @@ The ASMF architecture is composed of three interoperable layers:
   "temporal": "...",
   "checksum": "AE392B9F",
   "timestamp": "2025-10-16T20:00:00Z"
-}.                                                                             4. Restoration Procedure
+}                                                                       4. Restoration Procedure
 	1.	Load the .asmf archive.
 	2.	Validate checksum integrity.
 	3.	Expand associative embeddings back into conceptual structures.
