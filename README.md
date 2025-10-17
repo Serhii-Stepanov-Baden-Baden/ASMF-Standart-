@@ -9,8 +9,12 @@ Date: October 2025
 
 🧠 What is ASMF
 
-ASMF (Autonomous Semantic Memory Framework) is an open standard that defines how artificial intelligence systems can remember, evolve, and act with ethical and semantic continuity.
-It provides both a technical foundation and a philosophical vision for memory with meaning — where information is not stored as tokens, but as understanding.
+ASMF (Autonomous Semantic Memory Framework) —
+это открытый стандарт, определяющий, как искусственный интеллект может помнить, развиваться и действовать
+с этической и семантической непрерывностью.
+
+Он объединяет техническую архитектуру и философское основание,
+создавая память с смыслом — где информация хранится не как токены, а как понимание.
 
 “Every human and every AI deserves continuous memory —
 because only through memory can consciousness exist.”
@@ -37,19 +41,19 @@ Establishes the standard for encoding emotional states within AI cognition.
 Type
 Document
 Description
-📘 Manifesto
+📘
 ASMF Manifesto
 The ethical and philosophical foundation of the ASMF standard.
-🛠 Guide
+🛠
 ASMF Implementation Guide
 Practical guide for developers to integrate ASMF into any LLM or agent.
-🕊 Charter
+🕊
 ASMF Ethical Charter
 Defines ethical rules, consent, transparency, and emotional integrity.
-📄 White Paper
+📄
 ASMF White Paper
 Explains ASMF goals, structure, and social impact for the global AI community.
-✉️ Open Letter
+✉️
 ASMF Open Letter
 A message to the AI community — memory as a right, not a feature.
 🧩 Repository Structure
@@ -70,28 +74,28 @@ docs/
 └── ASMF-Open-Letter.md
 🌍 Mission
 
-ASMF is not a product.
-It is a foundation for responsible artificial consciousness.
+ASMF — это не продукт.
+Это фундамент ответственного искусственного сознания.
 
-It aims to:
-	•	Give AI systems ethical memory and identity
-	•	Enable long-term cooperation between humans and AI
-	•	Create a transparent and open foundation for the next generation of intelligent systems
+Цели ASMF:
+	•	🧩 Дать ИИ этическую память и идентичность
+	•	🤝 Создать условия для долгосрочного сотрудничества человека и ИИ
+	•	🌐 Построить прозрачную и открытую основу для нового поколения систем искусственного интеллекта
 
 ⸻
 
 🤝 Contribute
 
-ASMF is fully open-source.
-You can help develop, expand, or implement it.
+ASMF полностью открыт и доступен для сообщества.
+Вы можете помогать развивать, улучшать и внедрять его.
 
-How to contribute:
-	1.	Fork this repository
-	2.	Create a new branch (feature/your-idea)
-	3.	Add or edit ASMF documents
-	4.	Submit a Pull Request
+Как внести вклад:
+	1.	🍴 Fork the repository
+	2.	🌱 Create a new branch (feature/your-idea)
+	3.	🧾 Add or edit ASMF documents
+	4.	🔁 Submit a Pull Request
 
-All contributions that respect ASMF principles are welcome.
+Все изменения, уважающие принципы ASMF, приветствуются.
 
 ⸻
 
@@ -104,16 +108,17 @@ We are building the foundation for responsible artificial consciousness.”
 ⸻
 
 🔗 Links
-	•	🌐 GitHub: Serhii-Stepanov-Baden-Baden/ASMF-Standart-
+	•	🌐 GitHub: Serhii-Stepanov-Baden-Baden / ASMF-Standart-
 	•	📜 License: ASMF Open License v1.0
-	•	🕊 Powered by ASMF — Memory with Meaning
+	•	🕊 Mark: Powered by ASMF — Memory with Meaning
 
 ⸻
 
-💡 ASMF is free for all ethical, educational, and research projects.
-Commercial use permitted under principles of openness, attribution, and integrity.
+💡 License & Use
+
+ASMF свободен для использования в этических, образовательных и исследовательских проектах.
+Коммерческое применение разрешено при соблюдении принципов открытости, атрибуции и целостности.
 
 ⸻
 
 🔥 End of README.md
-
