@@ -58,9 +58,7 @@ The ASMF architecture is composed of three interoperable layers:
   "temporal": "...",
   "checksum": "AE392B9F",
   "timestamp": "2025-10-16T20:00:00Z"
-}
-
-## 4. Restoration Procedure
+}.                                                                             4. Restoration Procedure
 	1.	Load the .asmf archive.
 	2.	Validate checksum integrity.
 	3.	Expand associative embeddings back into conceptual structures.
@@ -69,19 +67,15 @@ The ASMF architecture is composed of three interoperable layers:
 
 If SIC < 90%, partial recovery mode activates, prompting human confirmation.
 
-## 5. Example Session
+⸻
 
-Initial Session
-User: Hello, can you remember me next time?
-AI: Yes. I will store this session in ASMF memory.
+5. Example Session
 
-Compression
-AI exports .asmf archive containing semantic relationships, tone, and topic links.
-New Session
+Initial Session.                                                            User: Hello, can you remember me next time?
+AI: Yes. I will store this session in ASMF memory.                                                        Compression
 
-User: Hello again.
-AI: I remember you. Last time, we discussed ASMF and memory ethics.
-Verification
+AI exports .asmf archive containing semantic relationships, tone, and topic links.               New Session.                                                   User: Hello again.
+AI: I remember you. Last time, we discussed ASMF and memory ethics.                  Verification
 
 The restored memory passes Semantic Integrity Check (SIC = 97.4%) —
 semantic context, tone, and relationship continuity confirmed.
