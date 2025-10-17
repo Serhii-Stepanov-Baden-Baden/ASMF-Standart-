@@ -67,13 +67,17 @@ The ASMF architecture is composed of three interoperable layers:
 	5.	Confirm coherence via Semantic Integrity Check (SIC).
 
 If SIC < 90%, partial recovery mode activates, prompting human confirmation.
+
 5. Example Session
+
 Initial Session
 User: Hello, can you remember me next time?
 AI: Yes. I will store this session in ASMF memory.
+
 Compression
 AI exports .asmf archive containing semantic relationships, tone, and topic links.
 New Session
+
 User: Hello again.
 AI: I remember you. Last time, we discussed ASMF and memory ethics.
 Verification
