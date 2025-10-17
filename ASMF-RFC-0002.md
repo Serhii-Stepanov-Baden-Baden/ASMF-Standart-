@@ -59,7 +59,8 @@ The ASMF architecture is composed of three interoperable layers:
   "checksum": "AE392B9F",
   "timestamp": "2025-10-16T20:00:00Z"
 }
-4. Restoration Procedure
+
+## 4. Restoration Procedure
 	1.	Load the .asmf archive.
 	2.	Validate checksum integrity.
 	3.	Expand associative embeddings back into conceptual structures.
@@ -68,7 +69,7 @@ The ASMF architecture is composed of three interoperable layers:
 
 If SIC < 90%, partial recovery mode activates, prompting human confirmation.
 
-5. Example Session
+## 5. Example Session
 
 Initial Session
 User: Hello, can you remember me next time?
