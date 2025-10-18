@@ -51,6 +51,8 @@ ARP unifies all three layers into a single archive file with the `.asmf` extensi
 3. Perform **semantic compression** (embedding clustering).  
 4. Save the result as an `.asmf` archive with version metadata.  
 
+---
+
 **Example structure:**
 
 ```json
@@ -110,6 +112,7 @@ asmf export --session current --output memory_snapshot.asmf
 asmf import --input memory_snapshot.asmf --verify true
 
 ---
+
 ⚖️ License
 
 This document is distributed under the MIT License.
