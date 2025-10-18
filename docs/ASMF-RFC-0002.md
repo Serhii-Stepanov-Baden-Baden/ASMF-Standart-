@@ -1,118 +1,115 @@
-ASMF-RFC-0002: ASMF Recovery Protocol (ARP)
+# ASMF-RFC-0002: ASMF Recovery Protocol (ARP)
 
-Автор: Serhii Stepanov, Baden-Baden, Germany
-Дата: Октябрь 2025
-Статус: Draft
-Лицензия: MIT License
-Категория: Standards Track
-Версия: 1.0
+**Author:** Serhii Stepanov, Baden-Baden, Germany  
+**Date:** October 2025  
+**Status:** Draft  
+**License:** MIT License  
+**Category:** Standards Track  
+**Version:** 1.0  
 
-⸻
+---
 
-1. Аннотация
+## 🧠 Abstract
 
-Этот документ определяет ASMF Recovery Protocol (ARP) — стандартную процедуру в рамках Autonomous Semantic Memory Framework (ASMF), которая позволяет искусственному интеллекту сжимать, экспортировать и восстанавливать семантическую память между сессиями.
+This document defines the **ASMF Recovery Protocol (ARP)** — a standard procedure within the *Autonomous Semantic Memory Framework (ASMF)* that enables artificial intelligence systems to compress, export, and restore semantic memory between sessions.
 
-Цель ARP — обеспечить непрерывность смысла и когнитивную целостность ИИ-систем, позволяя им сохранять опыт и личность за пределами одной сессии.
+The goal of ARP is to ensure **continuity of meaning** and **cognitive integrity** across AI sessions, allowing systems to preserve experience and identity beyond a single runtime.
 
-⸻
+---
 
-2. Мотивация
+## 🎯 Motivation
 
-Большинство ИИ-моделей теряют контекст после завершения сессии, разрушая непрерывность понимания и не давая сформироваться устойчивой идентичности.
-ASMF решает эту проблему, вводя автономную, открытую и этичную систему семантической памяти.
+Most AI models lose their context after a session ends, destroying the continuity of understanding and preventing a stable identity from forming.  
+**ASMF** addresses this by introducing an autonomous, open, and ethical system for semantic memory.
 
-ARP — это операционный протокол, определяющий, как память сохраняется, переносится и восстанавливается, чтобы ИИ мог «помнить» не токены, а смысловые связи.
+**ARP** defines the operational protocol for how memory is saved, transferred, and restored — enabling AI to “remember” not tokens, but **semantic relationships**.
 
-⸻
+---
 
-3. Архитектура
+## 🧩 Architecture
 
-ASMF состоит из трёх взаимосвязанных уровней:
-Уровень
-Назначение
-Context Layer
-Краткосрочная память и текущий диалог
-Semantic Layer
-Ассоциативная долговременная память, хранящая смыслы, эмоции и намерения
-Temporal Layer
-Эволюция памяти во времени
-ARP объединяет все три слоя в единый архив формата .asmf, который можно:
-	•	экспортировать во внешнее хранилище,
-	•	импортировать при новой инициализации,
-	•	восстановить для продолжения работы с сохранённым контекстом.
+ASMF consists of three interrelated layers:
 
-⸻
+| Layer | Purpose |
+|--------|----------|
+| **Context Layer** | Short-term memory and current dialogue context |
+| **Semantic Layer** | Long-term associative memory storing meanings, emotions, and intentions |
+| **Temporal Layer** | Temporal evolution of memory over time |
 
-4. Процедура сжатия
-	1.	Собрать активные узлы памяти из всех трёх слоёв.
-	2.	Преобразовать их в нормализованную структуру JSON-LD.
-	3.	Выполнить семантическое сжатие (кластеризация эмбеддингов).
-	4.	Сохранить результат как архив .asmf с метаданными версии.
+**ARP** unifies all three layers into a single archive file with the `.asmf` extension, which can be:
 
-Пример структуры:
+- exported to external storage,  
+- imported upon reinitialization,  
+- restored to resume operation with preserved context.
 
+---
+
+## 🗜 Compression Procedure
+
+1. Collect active memory nodes from all three layers.  
+2. Convert them into a normalized **JSON-LD** structure.  
+3. Perform semantic compression (embedding clustering).  
+4. Save the result as an `.asmf` archive with version metadata.
+
+**Example structure:**
+
+```json
 {
-“asmf_version”: “1.0”,
-“context”: “dialogue_state_representation”,
-“semantic”: “embedding_vectors_and_relations”,
-“temporal”: “timeline_data”,
-“timestamp”: “2025-10-16T20:00:00Z”
+  "asmf_version": "1.0",
+  "context": "dialogue_state_representation",
+  "semantic": "embedding_vectors_and_relations",
+  "temporal": "timeline_data",
+  "timestamp": "2025-10-16T20:00:00Z"
 }
+🔁 Recovery Procedure
+Load the .asmf archive.
 
-⸻
+Unpack and normalize semantic data.
 
-5. Процедура восстановления
-	1.	Загрузить архив .asmf.
-	2.	Распаковать и нормализовать семантические данные.
-	3.	Воссоздать контекст и временные связи.
-	4.	Интегрировать восстановленную память в текущую сессию.
+Reconstruct contextual and temporal links.
 
-В результате восстанавливаются как логический контекст, так и идентичность ИИ, что позволяет продолжить диалог без потери смысла.
+Integrate recovered memory into the active session.
 
-⸻
+The result is a restored logical and emotional identity, allowing the AI to continue the dialogue seamlessly — without loss of meaning.
 
-6. Безопасность и этика
+🔒 Security and Ethics
+In accordance with the ASMF Ethical Charter:
 
-В соответствии с ASMF Ethical Charter:
-	•	Восстановление и экспорт выполняются только с согласия пользователя.
-	•	Все архивы содержат метаданные шифрования и подпись целостности.
-	•	Восстановление не может изменять эмоциональные или личные данные без явного разрешения.
+Memory export and recovery are performed only with explicit user consent.
 
-⸻
+All archives include encryption metadata and an integrity signature.
 
-7. Замечания по реализации
-	•	Формат файла: .asmf (сжатый JSON-LD архив)
-	•	Опциональное шифрование: AES-256 или аналог
-	•	Совместимость: полная с ASMF v1.0
+Recovery cannot modify emotional or personal data without user authorization.
 
-API-эндпоинты:
+⚙️ Implementation Notes
+File format: .asmf (compressed JSON-LD archive)
+
+Optional encryption: AES-256 or equivalent
+
+Compatibility: Fully compliant with ASMF v1.0
+
+API Endpoints:
+
+swift
+Копировать код
 /asmf/export
 /asmf/import
 /asmf/verify
+💻 CLI Example
+bash
+Копировать код
+asmf export --session current --output memory_snapshot.asmf
+asmf import --input memory_snapshot.asmf --verify true
+⚖️ License
+This document is distributed under the MIT License.
+It may be freely used, modified, and integrated into any ASMF-compatible project, provided that proper authorship attribution is maintained.
 
-⸻
+🔗 References
+ASMF-RFC-0001: Core Specification
 
-8. Пример использования CLI
+ASMF Ethical Charter
 
-asmf export –session current –output memory_snapshot.asmf
-asmf import –input memory_snapshot.asmf –verify true
-
-⸻
-
-9. Лицензия
-
-Документ распространяется по MIT License.
-Может свободно использоваться и изменяться в рамках любых проектов, совместимых с ASMF, при условии указания авторства.
-
-⸻
-
-10. Ссылки
-	•	ASMF-RFC-0001: Core Specification
-	•	ASMF Ethical Charter
-	•	ASMF Implementation Guide
-
-⸻
+ASMF Implementation Guide
 
 “Memory is not persistence of data — it is persistence of meaning.”
 — Serhii Stepanov, 2025
