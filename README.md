@@ -1,6 +1,6 @@
 
 
-# (ASMF) **Autonomous Semantic Memory Framework**
+# 🌐 (ASMF) **Autonomous Semantic Memory Framework**
 **Version:** 3.0  
 **Author:** Serhii Stepanov (Baden-Baden, Germany)  
 **Date:** October 2025  
