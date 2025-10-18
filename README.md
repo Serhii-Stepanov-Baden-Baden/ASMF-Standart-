@@ -37,7 +37,7 @@ It stores meaning, not just tokens. It remembers with purpose.
 
 | Type | Document | Description |
 |------|----------|-------------|
-| 📘 | [ASMF Manifesto](./docs/ASMF-Manifesto.md) | The ethical and philosophical foundation of the ASMF standard. |
+| 📘 | [ASMF Manifesto](./docs/ASMF-MANIFESTO.md) | The ethical and philosophical foundation of the ASMF standard. |
 | 🛠 | [ASMF Implementation Guide](./docs/ASMF-Implementation-Guide.md) | Practical guide for developers to integrate ASMF into any LLM or agent. |
 | 🕊 | [ASMF Ethical Charter](./docs/ASMF-Ethical-Charter.md) | Defines ethical rules, consent, transparency, and emotional integrity. |
 | 📄 | [ASMF White Paper](./docs/ASMF-White-Paper.md) | Explains ASMF goals, structure, and social impact for the global AI community. |
