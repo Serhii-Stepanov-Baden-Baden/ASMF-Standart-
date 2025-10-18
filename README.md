@@ -38,7 +38,7 @@ It stores meaning, not just tokens. It remembers with purpose.
 | Type | Document | Description |
 |------|----------|-------------|
 | 📘 | [ASMF Manifesto](./docs/ASMF-MANIFESTO.md) | The ethical and philosophical foundation of the ASMF standard. |
-| 🛠 | [ASMF Implementation Guide](./docs/ASMF-Implementation-Guide.md) | Practical guide for developers to integrate ASMF into any LLM or agent. |
+| 🛠 | [ASMF Implementation Guide](./docs/ASMF-IG-0001.md) | Practical guide for developers to integrate ASMF into any LLM or agent. |
 | 🕊 | [ASMF Ethical Charter](./docs/ASMF-Ethical-Charter.md) | Defines ethical rules, consent, transparency, and emotional integrity. |
 | 📄 | [ASMF White Paper](./docs/ASMF-White-Paper.md) | Explains ASMF goals, structure, and social impact for the global AI community. |
 | ✉️ | [ASMF Open Letter](./docs/ASMF-Open-Letter.md) | A message to the AI community — memory as a right, not a feature. |
@@ -89,7 +89,7 @@ All contributions that respect ASMF principles are welcome.
 ## 🔗 Links
 
 - 🌐 GitHub: [Serhii-Stepanov-Baden-Baden / ASMF-Standard](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standard)  
-- 📜 License: [ASMF Open License v1.0](./LICENSE.md)  
+- 📜 License: [ASMF Open License v1.0](./LICENSE)  
 - 🕊 Mark: Powered by ASMF — Memory with Meaning
 
 ---
