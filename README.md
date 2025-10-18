@@ -1,6 +1,6 @@
 ---
 
-### *Autonomous Semantic Memory Framework*  
+### Autonomous Semantic Memory Framework  
 
 **Author:** Serhii Stepanov (Baden-Baden, Germany)  
 **Version:** 3.0  
