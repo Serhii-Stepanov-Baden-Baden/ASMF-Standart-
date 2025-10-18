@@ -62,11 +62,13 @@ ARP unifies all three layers into a single archive file with the `.asmf` extensi
   "semantic": "embedding_vectors_and_relations",
   "temporal": "timeline_data",
   "timestamp": "2025-10-16T20:00:00Z"
+...
 }
 
 ---
 
 🔁 Recovery Procedure
+
 Load the .asmf archive.
 
 Unpack and normalize semantic data.
@@ -80,6 +82,7 @@ The result is a restored logical and emotional identity, allowing the AI to cont
 ---
 
 🔒 Security and Ethics
+
 In accordance with the ASMF Ethical Charter:
 
 Memory export and recovery are performed only with explicit user consent.
@@ -91,6 +94,7 @@ Recovery cannot modify emotional or personal data without user authorization.
 ---
 
 ⚙️ Implementation Notes
+
 File format: .asmf (compressed JSON-LD archive)
 
 Optional encryption: AES-256 or equivalent
@@ -121,6 +125,7 @@ It may be freely used, modified, and integrated into any ASMF-compatible project
 ---
 
 🔗 References
+
 ASMF-RFC-0001: Core Specification
 
 ASMF Ethical Charter
