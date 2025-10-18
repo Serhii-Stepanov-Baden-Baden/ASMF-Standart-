@@ -1,11 +1,11 @@
 ---
 
-### Autonomous Semantic Memory Framework  
-
-**Author:** Serhii Stepanov (Baden-Baden, Germany)  
+# 📄 ASMF Autonomous Semantic Memory Framework
 **Version:** 3.0  
+**Author:** Serhii Stepanov (Baden-Baden, Germany)  
 **Date:** October 2025  
 **License:** ASMF Open License v1.0  
+
 
 ---
 
