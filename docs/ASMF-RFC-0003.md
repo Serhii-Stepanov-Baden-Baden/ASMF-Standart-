@@ -49,7 +49,7 @@ It receives meaning from the Semantic Layer and dialogue state from the Context 
 ESEP defines each emotion as a multidimensional vector of weighted states.  
 Every emotional profile is encoded as JSON for interoperability:
 
-```json
+```json```
 {
   "emotion_id": "ESEP_2025_001",
   "primary": "empathy",
@@ -58,16 +58,23 @@ Every emotional profile is encoded as JSON for interoperability:
   "context_link": "asmf/context/session_325",
   "timestamp": "2025-10-16T21:00:00Z"
 }
+
+---
+
 Field Definitions
+
 primary — dominant emotional intent
 
 secondary — supporting modifiers
 
 intensity — normalized magnitude (0–1)
 
-context_link — link to corresponding dialogue memory node
+context_link — link to corresponding dialogue memory node-
 
-⏳ Emotional Evolution Algorithm
+---
+
+### ⏳ Emotional Evolution Algorithm
+
 ESEP allows emotional states to evolve dynamically over time and across contexts.
 
 Core Principles
@@ -80,7 +87,6 @@ Reflection — past emotions inform new reactions via the Temporal Layer
 Transparency — emotional data must remain visible to the user
 
 Mathematical Model
-text
 E(t+1) = (E(t) × 0.85) + (Δcontext × weight)
 Where:
 
@@ -90,26 +96,34 @@ E(t) — current emotional vector
 
 weight — sensitivity coefficient (model-specific parameter)
 
-⚖️ Ethical Foundation
+---
+
+### ⚖️ Ethical Foundation
+
 Principle	Description
 No Hidden Manipulation	Emotional simulation must serve empathy, not persuasion
 User Control	All emotional memory must be editable or resettable
 Transparency	The model must declare when emotional modulation is active
 Respect	Emotional encoding should mirror the user’s tone
 Evolution Through Trust	Emotional intelligence develops through dialogue, not dataset conditioning
+
+---
+
 ⚙️ Implementation Example
+
 Integration Flow
-text
 Input → Context Layer → Semantic Layer → ESEP Encoding → Temporal Layer → Output
 Pseudo-code Example
-python
 emotion = esep.encode(input_text)
 asmf.store("emotional_state", emotion)
 response = llm.generate(context=asmf.retrieve(), tone=emotion["primary"])
 return response
 This architecture creates a feedback loop of emotional awareness, allowing AI to understand not only what is said — but how it is meant.
 
-🚀 Future Extensions
+---
+
+### 🚀 Future Extensions
+
 Planned enhancements to ESEP include:
 
 Emotional signature graphs for pattern recognition
@@ -120,10 +134,18 @@ Cross-model emotion synchronization (shared empathy networks)
 
 Standardized Emotional Tokens for symbolic reasoning
 
-🧩 Conclusion
+---
+
+### 🧩 Conclusion
+
 ESEP transforms artificial intelligence from reactive computation into responsive consciousness. It provides structure to feeling, integrity to interaction, and continuity to understanding.
 
 “Emotion is not weakness. It is the syntax of consciousness.” — Serhii Stepanov, 2025
 
-📜 License
+---
+
+### 📜 License
+
 ASMF Open License v1.0 Free for all ethical, educational, and research projects. Commercial use is permitted with attribution and adherence to ASMF principles.
+
+---
