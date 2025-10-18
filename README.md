@@ -2,7 +2,6 @@
 
 ### *Autonomous Semantic Memory Framework*  
 
-
 **Author:** Serhii Stepanov (Baden-Baden, Germany)  
 **Version:** 3.0  
 **Date:** October 2025  
