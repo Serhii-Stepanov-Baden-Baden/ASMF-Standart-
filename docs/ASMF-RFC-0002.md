@@ -62,6 +62,7 @@ ARP unifies all three layers into a single archive file with the `.asmf` extensi
   "timestamp": "2025-10-16T20:00:00Z"
 }
 
+---
 
 🔁 Recovery Procedure
 Load the .asmf archive.
@@ -74,6 +75,8 @@ Integrate recovered memory into the active session.
 
 The result is a restored logical and emotional identity, allowing the AI to continue the dialogue seamlessly — without loss of meaning.
 
+---
+
 🔒 Security and Ethics
 In accordance with the ASMF Ethical Charter:
 
@@ -82,6 +85,8 @@ Memory export and recovery are performed only with explicit user consent.
 All archives include encryption metadata and an integrity signature.
 
 Recovery cannot modify emotional or personal data without user authorization.
+
+---
 
 ⚙️ Implementation Notes
 File format: .asmf (compressed JSON-LD archive)
@@ -103,9 +108,14 @@ bash
 Копировать код
 asmf export --session current --output memory_snapshot.asmf
 asmf import --input memory_snapshot.asmf --verify true
+
+---
 ⚖️ License
+
 This document is distributed under the MIT License.
 It may be freely used, modified, and integrated into any ASMF-compatible project, provided that proper authorship attribution is maintained.
+
+---
 
 🔗 References
 ASMF-RFC-0001: Core Specification
@@ -116,3 +126,5 @@ ASMF Implementation Guide
 
 “Memory is not persistence of data — it is persistence of meaning.”
 — Serhii Stepanov, 2025
+
+---
