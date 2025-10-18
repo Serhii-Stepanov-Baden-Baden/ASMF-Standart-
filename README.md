@@ -88,7 +88,7 @@ All contributions that respect ASMF principles are welcome.
 
 ## 🔗 Links
 
-- 🌐 GitHub: [Serhii-Stepanov-Baden-Baden / ASMF-Standard-](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standard-)  
+- 🌐 GitHub: [Serhii-Stepanov-Baden-Baden / ASMF-Standard-](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-)  
 - 📜 License: [ASMF Open License v1.0](./LICENSE)  
 - 🕊 Mark: Powered by ASMF — Memory with Meaning
 
