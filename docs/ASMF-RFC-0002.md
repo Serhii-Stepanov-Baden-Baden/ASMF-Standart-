@@ -55,7 +55,7 @@ ARP unifies all three layers into a single archive file with the `.asmf` extensi
 
 **Example structure:**
 
-```json
+```json```
 {
   "asmf_version": "1.0",
   "context": "dialogue_state_representation",
@@ -126,13 +126,15 @@ It may be freely used, modified, and integrated into any ASMF-compatible project
 
 ## 🔗 References
 
-ASMF-RFC-0001: Core Specification
+ [ASMF Core Specification](./docs/ASMF-RFC-0001.md)     | Defines the overall framework, structure, and principles of semantic memory. |
 
-ASMF Ethical Charter
+ [ASMF Ethical Charter](./docs/ASMF-Ethical-Charter.md) | Defines ethical rules, consent, transparency, and emotional integrity. |
 
-ASMF Implementation Guide
+ [ASMF Implementation Guide](./docs/ASMF-IG-0001.md)    | Practical guide for developers to integrate ASMF into any LLM or agent. |
 
-“Memory is not persistence of data — it is persistence of meaning.”
+
+
+## “Memory is not persistence of data — it is persistence of meaning.”
 — Serhii Stepanov, 2025
 
 ---
