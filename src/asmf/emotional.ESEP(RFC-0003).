@@ -2,14 +2,14 @@ import json
 import yaml
 from typing import Dict, Any, List
 
-# Enhanced SemanticMemory (from prev)
+# Enhanced SemanticMemory (from previous modules)
 class SemanticMemory:
     def __init__(self):
         self.storage = {}
 
     def extract_concepts(self, text: str) -> List[str]:
         # Improved mock: keyword-based
-        keywords = ["перегрев", "проблема", "безопасность"]
+        keywords = ["overheating", "problem", "safety"]
         return [kw for kw in keywords if kw in text.lower()]
 
     def store(self, key: str, data: Dict):
@@ -21,7 +21,7 @@ class SemanticMemory:
         if key in self.storage and id_ in self.storage[key]:
             return self.storage[key][id_]
         if key == "context":
-            return {"context": "Решили проблему с перегревом тормозов?"}  # Str in dict
+            return {"context": "Fixed the brake overheating problem?"}  # Str in dict
         return {"primary": "neutral"}  # Default
 
 # Mock ESEP with better tone detection
@@ -31,7 +31,7 @@ class ESEP:
 
     def detect_tone(self, text: str) -> str:
         # Simple keyword mock (expand to torch.nn for real)
-        if any(word in text.lower() for word in ["проблема", "перегрев"]):
+        if any(word in text.lower() for word in ["problem", "overheating"]):
             return "worry"
         return "neutral"
 
@@ -54,7 +54,7 @@ class ESEPProcessor:
             with open(config_path, "r") as f:
                 self.config = yaml.safe_load(f)
         except FileNotFoundError:
-            raise ValueError("config.yaml не найден!")
+            raise ValueError("config.yaml not found!")
         self.memory = SemanticMemory()
         self.esep = ESEP(sensitivity=self.config["esep"]["weight"])
 
@@ -78,7 +78,7 @@ class ESEPProcessor:
         }
         self.memory.store("emotional_state", emotion_data)
         # Mock store context
-        self.memory.store("context", {"context": "Решили проблему с перегревом тормозов?", "id": f"session_{context_id}"})
+        self.memory.store("context", {"context": "Fixed the brake overheating problem?", "id": f"session_{context_id}"})
         return emotion_data
 
     def generate_response(self, context_id: str) -> str:
@@ -87,14 +87,14 @@ class ESEPProcessor:
             context_data = self.memory.retrieve("context", f"session_{context_id}")
             context = context_data.get("context", "No context")
             if emotion.get("primary") == "neutral":
-                raise ValueError("Эмоция не найдена — default neutral")
-            return f"Ответ с тоном {emotion['primary']}: {context}"
+                raise ValueError("Emotion not found — default neutral")
+            return f"Response with tone {emotion['primary']}: {context}"
         except ValueError as e:
-            return f"Default ответ: {e}"
+            return f"Default response: {e}"
 
-# Тест
+# Test
 session = {
-    "input_text": "Перегрев тормозов — это проблема!",
+    "input_text": "Brake overheating is a problem!",
     "context_id": "325"
 }
 esep_proc = ESEPProcessor()
@@ -102,5 +102,5 @@ emotion = esep_proc.encode_emotion(session["input_text"], session["context_id"])
 print(emotion)
 response = esep_proc.generate_response("325")
 print(response)
-# Вывод: {'emotion_id': 'ESEP_2025_325', ..., 'concepts': ['перегрев', 'проблема']}
-# "Ответ с тоном worry: Решили проблему с перегревом тормозов?"
+# Expected Output: {'emotion_id': 'ESEP_2025_325', ..., 'concepts': ['overheating', 'problem']}
+# "Response with tone worry: Fixed the brake overheating problem?"
