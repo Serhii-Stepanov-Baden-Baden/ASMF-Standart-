@@ -1,4 +1,5 @@
 
+<img width="300" height="300" alt="1" src="https://github.com/user-attachments/assets/0d2b4dd0-481e-451d-9408-5e0283f082cc" />
 
 # 🌐 (ASMF) **Autonomous Semantic Memory Framework**
 **Version:** 3.0  
