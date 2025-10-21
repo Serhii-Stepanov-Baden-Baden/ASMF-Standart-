@@ -1,1 +1,161 @@
+import json
+import lz4.frame
+import yaml
+from typing import Dict, Any, List
 
+# Enhanced SemanticMemory (with mapping)
+class SemanticMemory:
+    def __init__(self, compression: str = None, assoc_depth: int = None):
+        self.compression = compression
+        self.assoc_depth = assoc_depth
+        self.storage = {}
+
+    def extract_concepts(self, text: str) -> List[str]:
+        keywords = {
+            "перегрев": "overheating", "проблема": "issue", "брендинг": "branding",
+            "логотип": "logo", "тормоза": "disk_brakes", "abs": "ABS"
+        }
+        raw_concepts = [kw for kw, _ in keywords.items() if kw in text.lower()]
+        return [keywords[kw] for kw in raw_concepts]  # Map to EN
+
+    def extract_context(self, text: str) -> str:
+        return text[:50] + "..." if len(text) > 50 else text
+
+    def create_meaning_graph(self, concepts: List[str], relations: Dict[str, Any]) -> Dict:
+        graph = {c: {} for c in concepts}
+        for source, rel_data in relations.items():
+            if source not in graph:
+                graph[source] = {}
+            if isinstance(rel_data, dict):
+                graph[source].update(rel_data)
+        # Dynamic: if "disk_brakes" and "ABS" in concepts, add relation
+        if "disk_brakes" in concepts and "ABS" in concepts:
+            graph["disk_brakes"]["requires"] = "ABS"
+        return graph
+
+    def store(self, key: str, data: Dict):
+        if key not in self.storage:
+            self.storage[key] = {}
+        self.storage[key][data.get("emotion_id", "default")] = data
+
+    def retrieve(self, key: str, id_: str) -> Dict[str, Any]:
+        return self.storage.get(key, {}).get(id_, {"primary": "neutral"})
+
+# ESEP (unchanged)
+class ESEP:
+    def __init__(self, sensitivity: float):
+        self.sensitivity = sensitivity
+
+    def detect_tone(self, text: str) -> str:
+        if any(word in text.lower() for word in ["проблема", "перегрев"]):
+            return "worry"
+        if any(word in text.lower() for word in ["брендинг", "логотип"]):
+            return "inspiration"
+        return "neutral"
+
+    def encode(self, primary: str, secondary: List[str], intensity: float) -> Dict:
+        vector = [intensity if i == 0 else 0.3 for i in range(3)]
+        return {"vector": vector, "primary": primary, "secondary": secondary}
+
+# ARP (with merge)
+class ARP:
+    def __init__(self, compression: str = "lz4"):
+        self.compression = compression
+        self.files = {}
+
+    def save_egt(self, compressed: bytes, filename: str):
+        self.files[filename] = compressed
+
+    def load_user_projects(self, user_id: str) -> Dict[str, Any]:
+        projects = {}
+        for fname, data_bytes in self.files.items():
+            if fname.startswith(f"{user_id}_"):
+                parts = fname.split('_', 2)
+                if len(parts) >= 2:
+                    project = parts[1]
+                    asmf_data = json.loads(lz4.frame.decompress(data_bytes).decode('utf-8'))
+                    if project not in projects:
+                        projects[project] = asmf_data
+                    else:
+                        # Merge: append emotions/context
+                        prev = projects[project]
+                        prev["emotional"]["secondary"].extend(asmf_data["emotional"]["secondary"])
+                        prev["context"] += f" + {asmf_data['context']}"
+        return projects
+
+# Config (same)
+config_yaml = """
+esep:
+  weight: 0.5
+memory:
+  semantic:
+    compression: lz4
+    assoc_depth: 5
+"""
+with open('config.yaml', 'w') as f:
+    f.write(config_yaml)
+
+class BigBook:
+    def __init__(self, config_path: str = "config.yaml"):
+        try:
+            with open(config_path, "r") as f:
+                self.config = yaml.safe_load(f)
+        except FileNotFoundError:
+            raise ValueError("config.yaml не найден!")
+        self.memory = SemanticMemory(compression=self.config["memory"]["semantic"]["compression"])
+        self.esep = ESEP(sensitivity=self.config["esep"]["weight"])
+        self.arp = ARP(compression=self.config["memory"]["semantic"]["compression"])
+
+    def add_session(self, user_id: str, project: str, input_text: str, timestamp: str):
+        context = self.memory.extract_context(input_text)
+        tone = self.esep.detect_tone(input_text)
+        emotion = self.esep.encode(primary=tone, secondary=["calm"], intensity=0.7)
+        concepts = self.memory.extract_concepts(input_text)
+        relations = {}  # Dynamic in create_meaning_graph
+        semantic = self.memory.create_meaning_graph(concepts=concepts, relations=relations)
+        temporal = {"timestamp": timestamp, "project": project}
+
+        asmf_data = {
+            "asmf_version": "1.0",
+            "user_id": user_id,
+            "project": project,
+            "context": context,
+            "semantic": semantic,
+            "emotional": emotion,
+            "temporal": temporal
+        }
+        compressed = lz4.frame.compress(json.dumps(asmf_data).encode('utf-8'))
+        filename = f"{user_id}_{project}_{timestamp}.asmf"
+        self.arp.save_egt(compressed, filename)
+        return filename
+
+    def greet_user(self, user_id: str) -> str:
+        try:
+            projects = self.arp.load_user_projects(user_id)
+            if not projects:
+                return f"Привет, {user_id}! У тебя пока нет проектов. Что начнём?"
+            response = f"Привет, {user_id}! Ты работаешь над: "
+            for project, data in projects.items():
+                emotion = data["emotional"]["primary"]
+                context = data["context"]
+                response += f"{project} ({emotion}: {context}), "
+            return response.rstrip(", ") + ". На чём хочешь поработать сегодня?"
+        except Exception as e:
+            return f"Ошибка загрузки истории: {e}. Привет, {user_id}!"
+
+# Тест
+book = BigBook()
+book.add_session(
+    user_id="vasya",
+    project="Diamond Bridge",
+    input_text="Работаем над брендингом Diamond Bridge, нужен логотип",
+    timestamp="2025-10-21T14:06:00Z"
+)
+book.add_session(
+    user_id="vasya",
+    project="Petya",
+    input_text="Тормоза: ABS, перегрев — проблема",
+    timestamp="2025-10-21T14:07:00Z"
+)
+print(book.greet_user("vasya"))
+# Вывод: "Привет, vasya! Ты работаешь над: Diamond Bridge (inspiration: Работаем над брендингом Diamond Bridge, нужен лого...), Petya (worry: Тормоза: ABS, перегрев — проблема). На чём хочешь поработать сегодня?"
