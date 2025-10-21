@@ -91,7 +91,8 @@ All contributions that respect ASMF principles are welcome.
 
 - 🌐 GitHub: [Serhii-Stepanov-Baden-Baden / ASMF-Standard-](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-)  
 - 📜 License: [ASMF Open License v1.0](./LICENSE)
-- 🌐Medium: [medium.com/@srg.stepanov](https://medium.com/@srg.stepanov/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-8d8aec10e77d)
+- 🌐 Medium: [medium.com/@srg.stepanov](https://medium.com/@srg.stepanov/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-8d8aec10e77d)
+- 🌐 Releases: [v1.0](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-/releases/tag/v1.0)  
 - 🕊 Mark: Powered by ASMF — Memory with Meaning
 
 ---
