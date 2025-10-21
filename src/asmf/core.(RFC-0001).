@@ -10,23 +10,28 @@ class SemanticMemory:
         self.assoc_depth = assoc_depth
 
     def filter_noise(self, text: str, remove: list) -> str:
-        # Удаляем оффтопик (расширь по remove)
+        # Remove off-topic content (expand based on remove list)
         if "offtopic" in remove:
-            text = re.sub(r'Кофе пью\.', '', text)  # Простой пример
+            text = re.sub(r'Coffee break\.', '', text)  # Simple example; adapt for multilingual
+        if "repetitions" in remove:
+            # TODO: Add deduplication logic (e.g., via NLTK)
+            pass
         return text.strip()
 
     def extract_concepts(self, text: str) -> list:
-        # Динамика: ищем ключевые термины (можно улучшить NLP)
-        concepts = re.findall(r'(disk_brakes|ABS|overheating|тормоза|перегрев)', text.lower())
-        return list(set(concepts))  # Уникальные
+        # Dynamic extraction: Find key terms (improve with NLP like spaCy/BERT)
+        # Pattern handles mixed English/Russian; lowercase for matching
+        pattern = r'(disk_brakes|abs|overheating|тормоза|перегрев)'
+        concepts = re.findall(pattern, text.lower())
+        return list(set(concepts))  # Unique concepts
 
     def create_meaning_graph(self, text: str, relations: list = None) -> Dict:
         concepts = self.extract_concepts(text)
         graph = {"concepts": concepts}
         if relations:
             graph["relations"] = relations
-        # Добавляем эмоции (mock)
-        graph["emotional_state"] = "neutral"  # TODO: sentiment analysis
+        # Add emotions (mock; integrate real sentiment analysis)
+        graph["emotional_state"] = "neutral"  # TODO: Use VADER or torch for detection
         return graph
 
     def save_egt(self, egt: bytes, filename: str):
@@ -36,7 +41,7 @@ class SemanticMemory:
     def restore(self, data: bytes) -> Dict:
         return json.loads(data.decode('utf-8'))
 
-# Конфиг (тот же)
+# Sample config (same as before)
 config_yaml = """
 memory:
   semantic:
@@ -52,7 +57,7 @@ class ASMF:
             with open(config_path, "r") as f:
                 self.config = yaml.safe_load(f)
         except FileNotFoundError:
-            raise ValueError("config.yaml не найден!")
+            raise ValueError("config.yaml not found!")
         self.memory = SemanticMemory(
             compression=self.config["memory"]["semantic"]["compression"],
             assoc_depth=self.config["memory"]["semantic"]["assoc_depth"]
@@ -60,7 +65,7 @@ class ASMF:
 
     def process_session(self, session_data: Dict[str, Any]) -> bytes:
         filtered = self.memory.filter_noise(session_data["context"], remove=["repetitions", "offtopic"])
-        graph = self.memory.create_meaning_graph(filtered)  # Теперь динамично!
+        graph = self.memory.create_meaning_graph(filtered)  # Now dynamic!
         egt = lz4.frame.compress(json.dumps(graph).encode('utf-8'))
         filename = f"session_{session_data['timestamp']}.egt"
         self.memory.save_egt(egt, filename)
@@ -73,11 +78,11 @@ class ASMF:
             decompressed = lz4.frame.decompress(compressed)
             return self.memory.restore(decompressed)
         except FileNotFoundError:
-            raise ValueError(f"EGT-файл {egt_file} не найден!")
+            raise ValueError(f"EGT file {egt_file} not found!")
 
-# Тест
+# Test
 session = {
-    "context": "Тормозная система: дисковые тормоза, ABS, перегрев. Кофе пью.",
+    "context": "Brake system: disk brakes, ABS, overheating. Coffee break.",
     "user_id": "user123",
     "timestamp": "2025-10-21T13:48:00Z"
 }
@@ -85,4 +90,4 @@ asmf = ASMF()
 egt = asmf.process_session(session)
 new_session_graph = asmf.start_new_session("session_2025-10-21T13:48:00Z.egt")
 print(new_session_graph)
-# Вывод: {'concepts': ['disk_brakes', 'abs', 'overheating'], 'emotional_state': 'neutral'}
+# Expected Output: {'concepts': ['disk_brakes', 'abs', 'overheating'], 'emotional_state': 'neutral'}
