@@ -54,6 +54,14 @@ asmf/ ├── context/       # short-term memory layer ├── semantic/    
 
 
 ---
+## 🛠 Repository Structure & Architecture
+
+- [ASMF RFC-0001](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-/blob/main/src/asmf/core.py%3A%20%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D0%BA%D0%BB%D0%B0%D1%81%D1%81%20ASMF%20(RFC-0001).)
+- [ARP (RFC-0002)](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-/blob/main/src/asmf/recovery.py%3A%20ARP%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20(RFC-0002).)
+- [ESEP (RFC-0003)](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-/blob/main/src/asmf/emotional.py%3A%20ESEP%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D0%BC%D0%BE%D1%86%D0%B8%D0%B9%20(RFC-0003).)
+- [Полная интеграция](https://github.com/Serhii-Stepanov-Baden-Baden/ASMF-Standart-/blob/main/src/asmf/bigbook.py%3A%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F.)
+
+---
 
 ## 🌍 Mission
 
