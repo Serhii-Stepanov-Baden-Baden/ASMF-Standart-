@@ -12,11 +12,11 @@ class SemanticMemory:
 
     def extract_concepts(self, text: str) -> List[str]:
         keywords = {
-            "перегрев": "overheating", "проблема": "issue", "брендинг": "branding",
-            "логотип": "logo", "тормоза": "disk_brakes", "abs": "ABS"
+            "overheating": "overheating", "problem": "issue", "branding": "branding",
+            "logo": "logo", "brakes": "disk_brakes", "abs": "ABS"
         }
         raw_concepts = [kw for kw, _ in keywords.items() if kw in text.lower()]
-        return [keywords[kw] for kw in raw_concepts]  # Map to EN
+        return [keywords[kw] for kw in raw_concepts]  # Map to English
 
     def extract_context(self, text: str) -> str:
         return text[:50] + "..." if len(text) > 50 else text
@@ -41,15 +41,15 @@ class SemanticMemory:
     def retrieve(self, key: str, id_: str) -> Dict[str, Any]:
         return self.storage.get(key, {}).get(id_, {"primary": "neutral"})
 
-# ESEP (unchanged)
+# ESEP (unchanged from emotional.py)
 class ESEP:
     def __init__(self, sensitivity: float):
         self.sensitivity = sensitivity
 
     def detect_tone(self, text: str) -> str:
-        if any(word in text.lower() for word in ["проблема", "перегрев"]):
+        if any(word in text.lower() for word in ["problem", "overheating"]):
             return "worry"
-        if any(word in text.lower() for word in ["брендинг", "логотип"]):
+        if any(word in text.lower() for word in ["branding", "logo"]):
             return "inspiration"
         return "neutral"
 
@@ -57,7 +57,7 @@ class ESEP:
         vector = [intensity if i == 0 else 0.3 for i in range(3)]
         return {"vector": vector, "primary": primary, "secondary": secondary}
 
-# ARP (with merge)
+# ARP (with merge, from recovery.py)
 class ARP:
     def __init__(self, compression: str = "lz4"):
         self.compression = compression
@@ -83,7 +83,7 @@ class ARP:
                         prev["context"] += f" + {asmf_data['context']}"
         return projects
 
-# Config (same)
+# Config (same as before)
 config_yaml = """
 esep:
   weight: 0.5
@@ -101,7 +101,7 @@ class BigBook:
             with open(config_path, "r") as f:
                 self.config = yaml.safe_load(f)
         except FileNotFoundError:
-            raise ValueError("config.yaml не найден!")
+            raise ValueError("config.yaml not found!")
         self.memory = SemanticMemory(compression=self.config["memory"]["semantic"]["compression"])
         self.esep = ESEP(sensitivity=self.config["esep"]["weight"])
         self.arp = ARP(compression=self.config["memory"]["semantic"]["compression"])
@@ -133,29 +133,29 @@ class BigBook:
         try:
             projects = self.arp.load_user_projects(user_id)
             if not projects:
-                return f"Привет, {user_id}! У тебя пока нет проектов. Что начнём?"
-            response = f"Привет, {user_id}! Ты работаешь над: "
+                return f"Hi, {user_id}! You have no projects yet. What shall we start?"
+            response = f"Hi, {user_id}! You're working on: "
             for project, data in projects.items():
                 emotion = data["emotional"]["primary"]
                 context = data["context"]
                 response += f"{project} ({emotion}: {context}), "
-            return response.rstrip(", ") + ". На чём хочешь поработать сегодня?"
+            return response.rstrip(", ") + ". What do you want to work on today?"
         except Exception as e:
-            return f"Ошибка загрузки истории: {e}. Привет, {user_id}!"
+            return f"Error loading history: {e}. Hi, {user_id}!"
 
-# Тест
+# Test
 book = BigBook()
 book.add_session(
     user_id="vasya",
     project="Diamond Bridge",
-    input_text="Работаем над брендингом Diamond Bridge, нужен логотип",
+    input_text="Working on branding for Diamond Bridge, need a logo",
     timestamp="2025-10-21T14:06:00Z"
 )
 book.add_session(
     user_id="vasya",
     project="Petya",
-    input_text="Тормоза: ABS, перегрев — проблема",
+    input_text="Brakes: ABS, overheating — problem",
     timestamp="2025-10-21T14:07:00Z"
 )
 print(book.greet_user("vasya"))
-# Вывод: "Привет, vasya! Ты работаешь над: Diamond Bridge (inspiration: Работаем над брендингом Diamond Bridge, нужен лого...), Petya (worry: Тормоза: ABS, перегрев — проблема). На чём хочешь поработать сегодня?"
+# Expected Output: "Hi, vasya! You're working on: Diamond Bridge (inspiration: Working on branding for Diamond Bridge, need a log...), Petya (worry: Brakes: ABS, overheating — problem). What do you want to work on today?"
